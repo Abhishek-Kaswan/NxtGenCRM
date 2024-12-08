@@ -4,7 +4,8 @@ from app import crud
 from app.core.config import settings
 from app.models import User, UserCreate
 
-engine = create_engine(str(settings.SQLALCHEMY_DATABASE_URI))
+SQLALCHEMY_DATABASE_URL = "sqlite:///./sql_app.db"
+engine = create_engine(str(SQLALCHEMY_DATABASE_URL))
 
 
 # make sure all SQLModel models are imported (app.models) before initializing DB

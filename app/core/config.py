@@ -48,25 +48,25 @@ class Settings(BaseSettings):
             self.FRONTEND_HOST
         ]
 
-    PROJECT_NAME: str
+    PROJECT_NAME: str = "CRM"
     SENTRY_DSN: HttpUrl | None = None
-    POSTGRES_SERVER: str
-    POSTGRES_PORT: int = 5432
-    POSTGRES_USER: str
-    POSTGRES_PASSWORD: str = ""
-    POSTGRES_DB: str = ""
+    # POSTGRES_SERVER: str
+    # POSTGRES_PORT: int = 5432
+    # POSTGRES_USER: str
+    # POSTGRES_PASSWORD: str = ""
+    # POSTGRES_DB: str = ""
 
-    @computed_field  # type: ignore[prop-decorator]
-    @property
-    def SQLALCHEMY_DATABASE_URI(self) -> PostgresDsn:
-        return MultiHostUrl.build(
-            scheme="postgresql+psycopg",
-            username=self.POSTGRES_USER,
-            password=self.POSTGRES_PASSWORD,
-            host=self.POSTGRES_SERVER,
-            port=self.POSTGRES_PORT,
-            path=self.POSTGRES_DB,
-        )
+    # @computed_field  # type: ignore[prop-decorator]
+    # @property
+    # def SQLALCHEMY_DATABASE_URI(self) -> PostgresDsn:
+    #     return MultiHostUrl.build(
+    #         scheme="postgresql+psycopg",
+    #         username=self.POSTGRES_USER,
+    #         password=self.POSTGRES_PASSWORD,
+    #         host=self.POSTGRES_SERVER,
+    #         port=self.POSTGRES_PORT,
+    #         path=self.POSTGRES_DB,
+    #     )
 
     SMTP_TLS: bool = True
     SMTP_SSL: bool = False
@@ -94,8 +94,8 @@ class Settings(BaseSettings):
     # TODO: update type to EmailStr when sqlmodel supports it
     EMAIL_TEST_USER: str = "test@example.com"
     # TODO: update type to EmailStr when sqlmodel supports it
-    FIRST_SUPERUSER: str
-    FIRST_SUPERUSER_PASSWORD: str
+    FIRST_SUPERUSER: str = "test@test.com"
+    FIRST_SUPERUSER_PASSWORD: str = "test"
 
     def _check_default_secret(self, var_name: str, value: str | None) -> None:
         if value == "changethis":
