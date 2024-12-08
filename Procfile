@@ -1,1 +1,1 @@
-fastapi run --reload backend/app/main.py
+web: fastapi run --reload backend/app/main.py
