@@ -30,7 +30,7 @@ target_metadata = SQLModel.metadata
 
 
 def get_url():
-    return str(settings.SQLALCHEMY_DATABASE_URI)
+    return str("sqlite:///./sql_app.db")
 
 
 def run_migrations_offline():
